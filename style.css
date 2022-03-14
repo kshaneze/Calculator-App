@@ -1,0 +1,77 @@
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: monospace;
+}
+
+.container {
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  min-height: 100vh;
+  background-color: black;
+  grid-template-columns: repeat(4, 100px);
+  grid-template-rows: minmax(120px, auto) repeat(6, 100px);
+  grid-gap: 18px;
+}
+.container > button {
+  border-radius: 50px;
+  border: none;
+  font-size: 40px;
+  background-color: rgb(59, 58, 58);
+  color: white;
+  font-family: inherit;
+}
+
+.container > button:hover {
+  background-color: rgba(177, 174, 174, 0.644);
+}
+
+.container > button.symbols {
+  background-color: rgb(238, 140, 13);
+}
+
+.container > button.symbols:hover {
+  background-color: rgb(238, 181, 107);
+}
+
+.container > button.equal {
+  background-color: rgb(163, 38, 7);
+}
+.container > button.equal:hover {
+  background-color: rgb(199, 90, 63);
+}
+.container > button.deleting {
+  background-color: rgb(207, 202, 202);
+  color: black;
+}
+.container > button.deleting:hover {
+  background-color: rgb(246, 242, 242);
+}
+
+.span-2 {
+  grid-column: span 2;
+}
+
+.output {
+  color: white;
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  flex-direction: column;
+  padding: 10px;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.output .previous-operation {
+  font-size: 22px;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.output .current-operation {
+  font-size: 40px;
+  color: rgb(255, 255, 255);
+}
