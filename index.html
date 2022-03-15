@@ -4,7 +4,14 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400;1,700&family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
+
     <script src="script.js" defer></script>
     <title>Calculator</title>
   </head>
@@ -13,26 +20,26 @@
       <div class="container">
         <div class="output">
           <div class="previous-operation">123123</div>
-          <div class="current-operation">12313312</div>
+          <div class="current-operation"></div>
         </div>
 
         <button class="span-2 deleting">AC</button>
-        <button class="deleting">DEL</button>
-        <button class="symbols">÷</button>
+        <button class="deleting" data-action="decimal">.</button>
+        <button class="symbols" data-action="divide">÷</button>
         <button>1</button>
         <button>2</button>
         <button>3</button>
-        <button class="symbols">*</button>
+        <button class="symbols" data-action="multiply">*</button>
         <button>4</button>
         <button>5</button>
         <button>6</button>
-        <button class="symbols">-</button>
+        <button class="symbols" data-action="subtract">-</button>
         <button>7</button>
         <button>8</button>
         <button>9</button>
-        <button class="symbols">+</button>
+        <button class="symbols" data-action="add">+</button>
         <button class="span-2">0</button>
-        <button class="span-2 equal">=</button>
+        <button class="span-2 equal" data-action="equal">=</button>
       </div>
     </main>
   </body>
