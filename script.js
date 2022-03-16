@@ -6,33 +6,55 @@ const buttons = document.querySelectorAll('button');
 
 let currentOperationArray = [];
 
-
-
 buttons.forEach(button => {
   button.addEventListener('click', function (e) {
-    let buttonValue = e.target.textContent;
+    const clicked = e.target;
+    const buttonValue = e.target.textContent;
+    const action = clicked.dataset.action;
 
-    if(buttonValue.)
-    // Adding clicked elements to the current operation text
-    currentOperation.textContent += buttonValue;
-    // Adding values from pressed button into array
-    currentOperationArray.push(buttonValue);
+    if (!action) {
+      console.log('number');
 
-    // add numbers that are seperated with (+, -, /, *, =, AC) in one array
+      let value = (currentOperation.textContent += buttonValue);
 
-    // calculate seperated numbers
+      console.log(value);
+    }
 
-    // Implement function to calculate numbers when  = is clicked
+    if (action) {
+      if (
+        buttonValue === '+' ||
+        buttonValue === '-' ||
+        buttonValue === '*' ||
+        buttonValue === '÷'
+      ) {
+        console.log('operand');
+        currentOperation.textContent += ' ' + buttonValue;
+      }
+    }
 
-    // display calculated number
+    if (action) {
+      if (buttonValue === '=') {
+        console.log('equal');
+      }
+    }
 
-    console.log(currentOperationArray);
-    // If buttion AC is cllicked, clear current operation content
-    if (buttonValue == 'AC') {
+    if (buttonValue === 'AC') {
+      console.log('clear');
       currentOperation.textContent = '';
     }
 
-    if (buttonValue == '+') {
+    if (buttonValue === '.') {
+      console.log('decimal');
     }
   });
+});
+
+keys.addEventListener('click', e => {
+  if (e.target.matches('button')) {
+    const key = e.target;
+    const action = key.dataset.action;
+    const keyContent = key.textContent;
+    const displayedNum = display.textContent;
+    // ...
+  }
 });
