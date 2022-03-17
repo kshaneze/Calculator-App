@@ -66,12 +66,12 @@ html {
   word-break: break-all;
 }
 
-.output .previous-operation {
+.output .previous-operand {
   font-size: 22px;
   color: rgba(255, 255, 255, 0.75);
 }
 
-.output .current-operation {
+.output .current-operand {
   font-size: 50px;
   color: rgb(255, 255, 255);
 }

@@ -1,60 +1,54 @@
-'use strict';
-const container = document.querySelector('.container');
-const currentOperation = document.querySelector('.current-operation');
-const previousOperation = document.querySelector('.current-operation');
-const buttons = document.querySelectorAll('button');
+class Calculator {
+  constructor(previousOperandTextElement, currentOperandTextElement) {
+    this.previousOperandTextElement = previousOperandTextElement;
+    this.currentOperandTextElement = currentOperandTextElement;
+    this.clear();
+  }
 
-let currentOperationArray = [];
+  clear() {
+    this.currentOperand = '';
+    this.previousOperand = '';
+    this.operation = undefined;
+  }
 
-buttons.forEach(button => {
-  button.addEventListener('click', function (e) {
-    const clicked = e.target;
-    const buttonValue = e.target.textContent;
-    const action = clicked.dataset.action;
+  conpute() {}
 
-    if (!action) {
-      console.log('number');
+  appendNumber(number) {
+    if (number === '.' && this.currentOperand.includes('.')) return;
+    this.currentOperand = this.currentOperand.toString() + number.toString();
+  }
 
-      let value = (currentOperation.textContent += buttonValue);
+  choseOperation(operation) {}
 
-      console.log(value);
-    }
+  updateDisplay() {
+    this.currentOperandTextElement.innerText = this.currentOperand;
+  }
+}
 
-    if (action) {
-      if (
-        buttonValue === '+' ||
-        buttonValue === '-' ||
-        buttonValue === '*' ||
-        buttonValue === '÷'
-      ) {
-        console.log('operand');
-        currentOperation.textContent += ' ' + buttonValue;
-      }
-    }
+const numberButtons = document.querySelectorAll('[data-number]');
+const operationButtons = document.querySelectorAll('[data-operation]');
+const allClear = document.querySelector('[data-all-clear]');
+const equal = document.querySelector('[data-equal]');
+const currentOperandTextElement = document.querySelector(
+  '[data-current-operand]'
+);
+const previousOperandTextElement = document.querySelector(
+  '[data-previous-operand]'
+);
+/////////////////////////////////////////////////////////
 
-    if (action) {
-      if (buttonValue === '=') {
-        console.log('equal');
-      }
-    }
+// Creating calculator class
+const calculator = new Calculator(
+  previousOperandTextElement,
+  currentOperandTextElement
+);
+// Adding buttons
 
-    if (buttonValue === 'AC') {
-      console.log('clear');
-      currentOperation.textContent = '';
-    }
-
-    if (buttonValue === '.') {
-      console.log('decimal');
-    }
+numberButtons.forEach(button => {
+  button.addEventListener('click', function () {
+    calculator.appendNumber(button.innerText);
+    calculator.updateDisplay();
   });
 });
 
-keys.addEventListener('click', e => {
-  if (e.target.matches('button')) {
-    const key = e.target;
-    const action = key.dataset.action;
-    const keyContent = key.textContent;
-    const displayedNum = display.textContent;
-    // ...
-  }
-});
+allClear.addEventListener('click', function () {});
