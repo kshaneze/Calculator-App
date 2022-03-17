@@ -18,10 +18,15 @@ class Calculator {
     this.currentOperand = this.currentOperand.toString() + number.toString();
   }
 
-  choseOperation(operation) {}
+  choseOperation(operation) {
+    this.operation = operation;
+    this.previousOperand = this.currentOperand;
+    this.currentOperand = '';
+  }
 
   updateDisplay() {
     this.currentOperandTextElement.innerText = this.currentOperand;
+    this.previousOperandTextElement.innerText = this.previousOperand;
   }
 }
 
@@ -51,4 +56,13 @@ numberButtons.forEach(button => {
   });
 });
 
-allClear.addEventListener('click', function () {});
+operationButtons.forEach(button => {
+  button.addEventListener('click', function () {
+    calculator.choseOperation(button.innerText);
+    calculator.updateDisplay();
+  });
+});
+
+allClear.addEventListener('click', function () {
+  calculator.clear();
+});
