@@ -11,7 +11,31 @@ class Calculator {
     this.operation = undefined;
   }
 
-  conpute() {}
+  conpute() {
+    let computation;
+    const priv = parseFloat(this.previousOperand);
+    const current = parseFloat(this.currentOperand);
+    if (isNaN(priv) || isNaN(current)) return;
+    switch (this.operation) {
+      case '+':
+        computation = priv + current;
+        break;
+      case '-':
+        computation = priv - current;
+        break;
+      case '*':
+        computation = priv * current;
+        break;
+      case '÷':
+        computation = priv / current;
+        break;
+      default:
+        return;
+    }
+    this.currentOperand = computation;
+    this.operation = undefined;
+    this.previousOperand = '';
+  }
 
   appendNumber(number) {
     if (number === '.' && this.currentOperand.includes('.')) return;
@@ -19,6 +43,10 @@ class Calculator {
   }
 
   choseOperation(operation) {
+    if (this.currentOperand == '') return;
+    if (this.previousOperand !== '') {
+      this.conpute();
+    }
     this.operation = operation;
     this.previousOperand = this.currentOperand;
     this.currentOperand = '';
@@ -65,4 +93,10 @@ operationButtons.forEach(button => {
 
 allClear.addEventListener('click', function () {
   calculator.clear();
+  calculator.updateDisplay();
+});
+
+equal.addEventListener('click', function () {
+  calculator.conpute();
+  calculator.updateDisplay();
 });
