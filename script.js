@@ -4,17 +4,18 @@ class Calculator {
     this.currentOperandTextElement = currentOperandTextElement;
     this.clearAll();
   }
-
+  // Clearing every display
   clearAll() {
     this.currentOperand = '';
     this.previousOperand = '';
     this.operation = undefined;
   }
-
+  // Deleting numbers one by one (from the string)
   delete() {
     this.currentOperand = this.currentOperand.slice(0, -1);
   }
 
+  // Add / Devide / Multiply
   compute() {
     let computation;
     const priv = parseFloat(this.previousOperand);
@@ -37,11 +38,13 @@ class Calculator {
         return;
     }
 
+    // Current operand muast me equal to one of possible for solutions
     this.currentOperand = computation;
     this.operation = undefined;
     this.previousOperand = '';
   }
 
+  // how to store and add clicked numbers
   appendNumber(number) {
     if (number == '.' && this.currentOperand.includes('.')) return;
     this.currentOperand = this.currentOperand.toString() + number.toString();
@@ -67,6 +70,7 @@ class Calculator {
     }
   }
 
+  // Displaying appended numbers current and prev
   updateDisplay() {
     this.currentOperandTextElement.innerText = this.getDisplayNumber(
       this.currentOperand
@@ -80,6 +84,7 @@ class Calculator {
     }
   }
 
+  // Only one operation and how to chose
   choseOperation(operation) {
     if (this.currentOperand == '') return;
     if (this.currentOperand !== '') {
